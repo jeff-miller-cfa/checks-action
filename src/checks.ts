@@ -7,11 +7,11 @@ type Ownership = {
   repo: string;
 };
 
-const unpackInputs = (title: string, inputs: Inputs.Args): Record<string, unknown> => {
+const unpackInputs = (name: string, inputs: Inputs.Args): Record<string, unknown> => {
   let output;
   if (inputs.output) {
     output = {
-      title,
+      title: inputs.output.title || name,
       summary: inputs.output.summary,
       text: inputs.output.text_description,
       actions: inputs.actions,
@@ -85,6 +85,6 @@ export const updateRun = async (
   await octokit.checks.update({
     ...ownership,
     check_run_id: id,
-    ...unpackInputs(inputs.output.title || previous.data.name, inputs),
+    ...unpackInputs(previous.data.name, inputs),
   });
 };
