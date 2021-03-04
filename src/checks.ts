@@ -12,6 +12,7 @@ const unpackInputs = (name: string, inputs: Inputs.Args): Record<string, unknown
   if (inputs.output) {
     output = {
       title: inputs.output.title || name,
+      details_url: inputs.output.details_url,
       summary: inputs.output.summary,
       text: inputs.output.text_description,
       actions: inputs.actions,

@@ -43,6 +43,7 @@ export type Actions = NonNullable<
 
 export type Output = {
   title?: string;
+  details_url: string;
   summary: string;
   text_description?: string;
 };
