@@ -85,6 +85,6 @@ export const updateRun = async (
   await octokit.checks.update({
     ...ownership,
     check_run_id: id,
-    ...unpackInputs(previous.data.name, inputs),
+    ...unpackInputs(inputs.output.title || previous.data.name, inputs),
   });
 };
